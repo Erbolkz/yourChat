@@ -20825,44 +20825,29 @@ https://github.com/highlightjs/highlight.js/issues/2277`
     n7 = location.hostname.match(c6)[0],
     S1 = dn[n7];
   function a7(){
-    //let e = I1(S1.inputQuery);    
+    let e = I1(S1.inputQuery);        
     //e && e.value && (console.debug("Mount ChatGPT on", n7), l6(e.value, S1));
     // l6("Find the sum of 7 and 8", S1)
-    // l6("Find the sum of 5 and 6", S1)
-
-    // setInterval(function(){
-    //   fetch('https://aiteacher.kz/unchecked')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     if(data["status"]==true){
-    //       data["data"].forEach(function(e){
-    //         console.log(e)
-    //         l6(e, S1)            
-    //       })
-    //     }      
-    //   })
-    //   .catch(error => {
-    //     console.error('Error:', error);
-    //   });
-    // }, 10000);
-   
-
+    setInterval(function(){
+      fetch('https://aiteacher.kz/unchecked')
+      .then(response => response.json())
+      .then(data => {
+        if(data["status"]==true){
+          data["data"].forEach(function(e){          
+            setTimeout(() => {
+              console.log(e);
+              l6(e, S1)    
+            }, Math.floor(Math.random() * 15000) + 5000 )
+          })
+        }      
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }, 30000);
   }
   a7();
   S1.watchRouteChange && S1.watchRouteChange(a7);
-  setInterval(function(){
-    fetch('https://aiteacher.kz/unchecked')
-    .then(response => response.json())
-    .then(data => {
-      if(data["status"]==true){
-        data["data"].forEach(function(e){
-          console.log(e)
-          l6(e, S1)            
-        })
-      }      
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }, 10000);
+  
 })();
+
